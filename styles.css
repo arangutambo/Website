@@ -60,7 +60,13 @@ a { color: inherit; }
 .foot { padding: clamp(22px, 4vw, 40px); }
 
 /* ---- hero ---- */
-.hero { border-bottom: 2px solid var(--border); }
+.hero {
+  --accent: var(--rust);
+  --tint: #ECDACF;
+  background: var(--tint);
+  border-bottom: 2px solid var(--border);
+  border-left: 6px solid var(--accent);
+}
 
 .hero h1 {
   margin: 0;
@@ -75,7 +81,7 @@ a { color: inherit; }
   font-size: 0.8rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--rust);
+  color: var(--accent);
 }
 .lede {
   margin: 1.25rem 0 1.75rem;
@@ -103,13 +109,25 @@ a { color: inherit; }
 }
 .chip:hover,
 .chip:focus-visible {
-  background: var(--ink);
+  background: var(--accent, var(--ink));
   color: var(--paper);
+  border-color: var(--accent, var(--ink));
   outline: none;
 }
 
 /* ---- sections ---- */
-.section { border-bottom: 2px solid var(--border); }
+.section {
+  border-bottom: 2px solid var(--border);
+  border-left: 6px solid var(--accent);
+  background: var(--tint);
+}
+/* each section carries one colour from the bark palette, top to bottom */
+.section:nth-of-type(1) { --accent: var(--brown);  --tint: #E4DBC9; }
+.section:nth-of-type(2) { --accent: var(--green);  --tint: #DEE1CE; }
+.section:nth-of-type(3) { --accent: var(--purple); --tint: #E6DCDF; }
+.section:nth-of-type(4) { --accent: var(--rust);   --tint: #ECDACF; }
+.section:nth-of-type(5) { --accent: var(--green);  --tint: #DEE1CE; }
+.section:nth-of-type(6) { --accent: var(--purple); --tint: #E6DCDF; }
 
 .section-head {
   display: flex;
@@ -119,8 +137,10 @@ a { color: inherit; }
 }
 .index {
   font-family: var(--mono);
-  font-size: 0.8rem;
-  color: var(--rust);
+  font-size: 0.78rem;
+  color: var(--paper);
+  background: var(--accent);
+  padding: 0.15em 0.5em;
 }
 .section h2 {
   margin: 0;
@@ -132,8 +152,8 @@ a { color: inherit; }
 .section p { margin: 0 0 1rem; max-width: 62ch; }
 .section p:last-child { margin-bottom: 0; }
 
-.section a { text-decoration: underline; text-decoration-color: var(--green); text-underline-offset: 3px; }
-.section a:hover { color: var(--green); }
+.section a { text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 3px; }
+.section a:hover { color: var(--accent); }
 
 em { color: var(--purple); font-style: normal; border-bottom: 1px solid var(--purple); }
 strong { color: var(--rust); }
@@ -150,10 +170,13 @@ strong { color: var(--rust); }
 .tags li {
   padding: 0.4em 0.75em;
   border: 1.5px solid var(--border);
+  border-left: 4px solid var(--accent);
   font-family: var(--mono);
   font-size: 0.78rem;
-  background: var(--paper-2);
+  background: var(--paper);
+  transition: background 120ms linear, color 120ms linear;
 }
+.tags li:hover { background: var(--accent); color: var(--paper); }
 
 /* ---- key/value rows ---- */
 .rows { margin-top: 1.5rem; border-top: 1.5px solid var(--border); }
@@ -169,7 +192,7 @@ strong { color: var(--rust); }
   font-size: 0.72rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--rust);
+  color: var(--accent);
   padding-top: 0.15rem;
 }
 .row-body { color: var(--muted); }
@@ -183,6 +206,7 @@ strong { color: var(--rust); }
 
 /* ---- footer ---- */
 .foot {
+  --accent: var(--brown);
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -191,6 +215,8 @@ strong { color: var(--rust); }
   font-size: 0.72rem;
   letter-spacing: 0.04em;
   color: var(--muted);
+  background: var(--paper-2);
+  border-left: 6px solid var(--accent);
 }
 
 /* ---- responsive ---- */
