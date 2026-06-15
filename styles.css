@@ -1,0 +1,201 @@
+/* =========================================================
+   Antoine Haddad — palette drawn from a eucalyptus trunk:
+   muddy browns, browny reds, muted forest greens, soft purples
+   Minimalist, squared edges, no rounded corners, no shadows.
+   ========================================================= */
+
+:root {
+  --paper:    #EAE3D6;  /* pale bark / background      */
+  --paper-2:  #DCD2C1;  /* second tone / fills         */
+  --ink:      #2A2521;  /* warm near-black text & lines*/
+  --muted:    #6E6557;  /* secondary text              */
+  --brown:    #5C4736;  /* muddy brown                 */
+  --rust:     #97553B;  /* browny red                  */
+  --green:    #59684B;  /* muted forest green          */
+  --purple:   #6A586A;  /* soft natural purple         */
+  --border:   #2A2521;
+
+  --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  padding: clamp(16px, 5vw, 56px);
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--rust); color: var(--paper); }
+
+a { color: inherit; }
+
+/* ---- outer frame ---- */
+.frame {
+  max-width: 760px;
+  margin: 0 auto;
+  border: 2px solid var(--border);
+  background: var(--paper);
+}
+
+/* ---- palette strip ---- */
+.palette {
+  display: flex;
+  height: 12px;
+  border-bottom: 2px solid var(--border);
+}
+.palette span { flex: 1; }
+
+/* ---- shared section padding ---- */
+.hero,
+.section,
+.foot { padding: clamp(22px, 4vw, 40px); }
+
+/* ---- hero ---- */
+.hero { border-bottom: 2px solid var(--border); }
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(2.2rem, 7vw, 3.4rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+.role {
+  margin: 0.5rem 0 0;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--rust);
+}
+.lede {
+  margin: 1.25rem 0 1.75rem;
+  max-width: 56ch;
+  color: var(--muted);
+}
+
+/* ---- chips (contact / links) ---- */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.chip {
+  display: inline-block;
+  padding: 0.5em 0.95em;
+  border: 1.5px solid var(--border);
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: var(--paper);
+  transition: background 120ms linear, color 120ms linear;
+}
+.chip:hover,
+.chip:focus-visible {
+  background: var(--ink);
+  color: var(--paper);
+  outline: none;
+}
+
+/* ---- sections ---- */
+.section { border-bottom: 2px solid var(--border); }
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+.index {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--rust);
+}
+.section h2 {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.section p { margin: 0 0 1rem; max-width: 62ch; }
+.section p:last-child { margin-bottom: 0; }
+
+.section a { text-decoration: underline; text-decoration-color: var(--green); text-underline-offset: 3px; }
+.section a:hover { color: var(--green); }
+
+em { color: var(--purple); font-style: normal; border-bottom: 1px solid var(--purple); }
+strong { color: var(--rust); }
+
+/* ---- tag lists (skills / instruments) ---- */
+.tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+}
+.tags li {
+  padding: 0.4em 0.75em;
+  border: 1.5px solid var(--border);
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  background: var(--paper-2);
+}
+
+/* ---- key/value rows ---- */
+.rows { margin-top: 1.5rem; border-top: 1.5px solid var(--border); }
+.row {
+  display: flex;
+  gap: 1rem;
+  padding: 0.7rem 0;
+  border-bottom: 1.5px solid var(--border);
+}
+.row-label {
+  flex: 0 0 7.5rem;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--rust);
+  padding-top: 0.15rem;
+}
+.row-body { color: var(--muted); }
+
+/* ---- contact email ---- */
+.email {
+  font-family: var(--mono);
+  font-size: clamp(1rem, 3vw, 1.3rem);
+}
+.email a { text-decoration-color: var(--rust); }
+
+/* ---- footer ---- */
+.foot {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+
+/* ---- responsive ---- */
+@media (max-width: 480px) {
+  .row { flex-direction: column; gap: 0.15rem; }
+  .row-label { flex-basis: auto; }
+  .foot { flex-direction: column; }
+}
