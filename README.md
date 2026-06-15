@@ -37,9 +37,9 @@ git add .
 git commit -m "Personal site"
 git branch -M main
 
-# create a new EMPTY repo on github.com named exactly:  arangutambo.github.io
+# create a new EMPTY repo on github.com named:  Website
 # (no README / .gitignore / license), then:
-git remote add origin https://github.com/arangutambo/arangutambo.github.io.git
+git remote add origin https://github.com/arangutambo/Website.git
 git push -u origin main
 ```
 
@@ -50,7 +50,8 @@ On GitHub: **Settings → Pages**
 - **Source:** Deploy from a branch
 - **Branch:** `main`  ·  **Folder:** `/ (root)`  →  Save
 
-In a minute your site is live at `https://arangutambo.github.io/`.
+In a minute your site is live at `https://arangutambo.github.io/Website/`
+(and at `https://antoinejhaddad.com` once DNS is set up in step 4).
 
 ## 4. Point your domain at it
 
