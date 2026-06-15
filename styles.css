@@ -1,6 +1,6 @@
 /* =========================================================
    Antoine Haddad — palette drawn from a eucalyptus trunk:
-   muddy browns, browny reds, muted forest greens, soft purples
+   muddy browns, browny reds and muted forest greens
    Minimalist, squared edges, no rounded corners, no shadows.
    ========================================================= */
 
@@ -12,7 +12,6 @@
   --brown:    #5C4736;  /* muddy brown                 */
   --rust:     #97553B;  /* browny red                  */
   --green:    #59684B;  /* muted forest green          */
-  --purple:   #6A586A;  /* soft natural purple         */
   --border:   #2A2521;
 
   --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
@@ -124,10 +123,10 @@ a { color: inherit; }
 /* each section carries one colour from the bark palette, top to bottom */
 .section:nth-of-type(1) { --accent: var(--brown);  --tint: #E4DBC9; }
 .section:nth-of-type(2) { --accent: var(--green);  --tint: #DEE1CE; }
-.section:nth-of-type(3) { --accent: var(--purple); --tint: #E6DCDF; }
-.section:nth-of-type(4) { --accent: var(--rust);   --tint: #ECDACF; }
+.section:nth-of-type(3) { --accent: var(--rust);   --tint: #ECDACF; }
+.section:nth-of-type(4) { --accent: var(--brown);  --tint: #E4DBC9; }
 .section:nth-of-type(5) { --accent: var(--green);  --tint: #DEE1CE; }
-.section:nth-of-type(6) { --accent: var(--purple); --tint: #E6DCDF; }
+.section:nth-of-type(6) { --accent: var(--rust);   --tint: #ECDACF; }
 
 .section-head {
   display: flex;
@@ -155,7 +154,7 @@ a { color: inherit; }
 .section a { text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 3px; }
 .section a:hover { color: var(--accent); }
 
-em { color: var(--purple); font-style: normal; border-bottom: 1px solid var(--purple); }
+em { color: var(--accent); font-style: normal; border-bottom: 1px solid var(--accent); }
 strong { color: var(--rust); }
 
 /* ---- tag lists (skills / instruments) ---- */
