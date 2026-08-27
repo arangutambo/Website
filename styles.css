@@ -177,6 +177,45 @@ strong { color: var(--rust); }
 }
 .tags li:hover { background: var(--accent); color: var(--paper); }
 
+/* ---- plugin list ---- */
+.plugins {
+  list-style: none;
+  margin: 1.5rem 0 1.25rem;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+.plugin {
+  padding: 0.85rem 1rem;
+  border: 1.5px solid var(--border);
+  border-left: 4px solid var(--accent);
+  background: var(--paper);
+  transition: background 120ms linear;
+}
+.plugin:hover { background: var(--paper-2); }
+.plugin h3 {
+  margin: 0 0 0.3rem;
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.section .plugin p {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--muted);
+  max-width: 60ch;
+}
+
+/* ---- trailing aside ---- */
+.aside {
+  font-size: 0.88rem;
+  color: var(--muted);
+  border-top: 1.5px solid var(--border);
+  padding-top: 0.9rem;
+}
+
 /* ---- key/value rows ---- */
 .rows { margin-top: 1.5rem; border-top: 1.5px solid var(--border); }
 .row {
