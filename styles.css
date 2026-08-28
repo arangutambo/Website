@@ -67,6 +67,35 @@ a { color: inherit; }
   border-left: 6px solid var(--accent);
 }
 
+/* ---- hero layout: text beside portrait ---- */
+.hero-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(20px, 4vw, 36px);
+  align-items: center;
+}
+.hero-text { flex: 1 1 20rem; min-width: 0; }
+
+.portrait {
+  display: block;
+  width: clamp(140px, 22vw, 210px);
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border: 2px solid var(--border);
+  filter: grayscale(18%) contrast(1.02);
+}
+
+.eyebrow {
+  margin: 0 0 0.75rem;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.eyebrow a { text-decoration: none; }
+.eyebrow a:hover { color: var(--accent); }
+
 .hero h1 {
   margin: 0;
   font-size: clamp(2.2rem, 7vw, 3.4rem);
@@ -75,10 +104,12 @@ a { color: inherit; }
   line-height: 1.05;
 }
 .role {
-  margin: 0.5rem 0 0;
+  margin: 0.55rem 0 0;
+  max-width: 46ch;
   font-family: var(--mono);
-  font-size: 0.8rem;
-  letter-spacing: 0.22em;
+  font-size: 0.76rem;
+  line-height: 1.6;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--accent);
 }
@@ -229,6 +260,36 @@ strong { color: var(--rust); }
   padding-top: 0.9rem;
 }
 
+/* ---- timeline (education / experience) ---- */
+.timeline { margin-top: 1.4rem; }
+.timeline .tl-entry {
+  padding: 0 0 0 1rem;
+  border-left: 4px solid var(--accent);
+  margin-bottom: 1.4rem;
+}
+.timeline .tl-entry:last-child { margin-bottom: 0; }
+.timeline .tl-entry h3 {
+  margin: 0 0 0.2rem;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+}
+.section .timeline .tl-entry .role-meta {
+  margin: 0 0 0.5rem;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.section .timeline .tl-entry p {
+  margin: 0 0 0.5rem;
+  font-size: 0.92rem;
+  color: var(--muted);
+  max-width: 60ch;
+}
+.section .timeline .tl-entry p:last-child { margin-bottom: 0; }
+
 /* ---- key/value rows ---- */
 .rows { margin-top: 1.5rem; border-top: 1.5px solid var(--border); }
 .row {
@@ -247,20 +308,6 @@ strong { color: var(--rust); }
   padding-top: 0.15rem;
 }
 .row-body { color: var(--muted); }
-
-/* ---- stacked entries inside a row ---- */
-.entry { display: block; }
-.entry + .entry { margin-top: 0.5rem; }
-.when {
-  display: block;
-  margin-top: 0.15rem;
-  font-family: var(--mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--accent);
-  white-space: nowrap;
-}
 
 /* ---- contact email ---- */
 .email {
@@ -285,6 +332,10 @@ strong { color: var(--rust); }
 }
 
 /* ---- responsive ---- */
+@media (max-width: 620px) {
+  .portrait { width: clamp(120px, 40vw, 170px); }
+}
+
 @media (max-width: 480px) {
   .row { flex-direction: column; gap: 0.15rem; }
   .row-label { flex-basis: auto; }
