@@ -114,10 +114,42 @@
           <span class="row-label">Focus</span>
           <span class="row-body">[e.g. genomics, single-cell, computational biology]</span>
         </div>
-        <div class="row">
-          <span class="row-label">Projects</span>
-          <span class="row-body">[short line about a project — link it if it's on GitHub]</span>
-        </div>
+      </div>
+
+      <div class="project">
+        <h3>Testing for cryptic species in a coral gene-expression survey</h3>
+        <p class="project-meta">Unsupervised learning · R · Graduate coursework</p>
+        <p>
+          A set of reef coral colonies had been assigned to a single species on
+          morphology alone. Given a baseline gene-expression matrix — a few
+          hundred colonies across several hundred loci — the question was
+          whether that assumption survived the molecular data, or whether the
+          profiles broke into discrete groups consistent with cryptic species
+          hiding inside one morphological description.
+        </p>
+        <p>
+          I standardised the expression variables so no gene dominated on scale
+          alone, screened for multivariate outliers using Mahalanobis distance
+          on the leading components, then ran <strong>PCA</strong> and
+          <strong>classical MDS</strong> as two independent views of the same
+          variation. Rather than eyeball the ordinations for groups, I tested
+          for them: <strong>k-means</strong> across a range of <em>k</em>, judged
+          on within-cluster sum of squares and average silhouette width, and
+          cross-checked against <strong>Ward hierarchical clustering</strong>.
+          Sampling depth was held back and used only afterwards, as an
+          ecological sanity check on whatever the clustering found.
+        </p>
+        <p>
+          The evidence pointed the other way. No component dominated the
+          variance, both ordinations showed one continuous cloud rather than
+          separated ones, and cluster support stayed near zero at every
+          <em>k</em> — with the hierarchical solution agreeing. The defensible
+          conclusion was a negative one: these data don't support a
+          cryptic-species reading, and the report said so and set out what
+          evidence would actually settle it. The real work was declining a
+          clustering result that k-means will hand you whether or not the
+          structure is there.
+        </p>
       </div>
     </section>
 

@@ -185,7 +185,8 @@ strong { color: var(--rust); }
   display: grid;
   gap: 10px;
 }
-.plugin {
+.plugin,
+.project {
   padding: 0.85rem 1rem;
   border: 1.5px solid var(--border);
   border-left: 4px solid var(--accent);
@@ -193,7 +194,9 @@ strong { color: var(--rust); }
   transition: background 120ms linear;
 }
 .plugin:hover { background: var(--paper-2); }
-.plugin h3 {
+.project { margin-top: 1.5rem; }
+.plugin h3,
+.project h3 {
   margin: 0 0 0.3rem;
   font-family: var(--mono);
   font-size: 0.82rem;
@@ -201,11 +204,21 @@ strong { color: var(--rust); }
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
-.section .plugin p {
+.section .plugin p,
+.section .project p {
   margin: 0;
   font-size: 0.92rem;
   color: var(--muted);
   max-width: 60ch;
+}
+.section .project p + p { margin-top: 0.7rem; }
+.section .project .project-meta {
+  margin-bottom: 0.7rem;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
 }
 
 /* ---- trailing aside ---- */
