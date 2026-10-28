@@ -55,7 +55,7 @@
 .leaf::after  { content: ""; position: absolute; left: -35px; top: 23px; width: 14px; height: 14px; background: var(--node); border: 2px solid var(--ink); }
 .leaf-tag { max-width: none !important; margin: 0; padding: 7px 14px; font-family: var(--mono); font-size: 11.5px; letter-spacing: .12em; color: var(--paper); background: var(--node); }
 .leaf .plate-body { padding: clamp(16px, 3vw, 28px); }
-.leaf .plate-body h2 { font-size: clamp(18px, 2.6vw, 22px); letter-spacing: 0; text-transform: none; }
+.leaf .plate-body h3 { font-size: clamp(18px, 2.6vw, 22px); letter-spacing: 0; text-transform: none; }
 .projects .aside { margin-top: 6px; }
 .section.projects a { text-decoration-color: var(--rust); }
 .projects .links a, .projects .crumb a { text-decoration: none; }
@@ -73,3 +73,21 @@
 #gwas > .leaf-tag { background-image: url("figures/tag-gwas.svg"); }
 #rnaseq > .leaf-tag { background-image: url("figures/tag-rnaseq.svg"); }
 #microbiome > .leaf-tag { background-image: url("figures/tag-microbiome.svg"); }
+
+
+/* ---- accessibility and comfort (from the UI/UX review) ---- */
+.skip { position: absolute; left: 8px; top: -60px; z-index: 10; background: var(--ink); color: var(--paper); padding: 10px 14px; font: 13px var(--mono); text-decoration: none; }
+.skip:focus { top: 8px; outline: 2px solid var(--rust); outline-offset: 2px; }
+a:focus-visible, button:focus-visible, input:focus-visible, .chip:focus-visible, .links a:focus-visible { outline: 2px solid var(--rust); outline-offset: 2px; }
+.figure-1 .panel:focus-visible { outline: 2px solid var(--rust); outline-offset: -2px; background: #F3EDE1; }
+.figure-1 .fig1-cap { font-size: 12px; }
+.hero-tree figcaption { font-size: 11.5px; }
+.readout span { font-size: 12px; }
+@media (pointer: coarse), (max-width: 640px) {
+  .chip, .links a { min-height: 44px; display: inline-flex; align-items: center; }
+  .switch { min-height: 44px; }
+  .switch input { width: 44px; height: 24px; }
+  .switch input::after { width: 16px; height: 16px; top: 3px; left: 3px; }
+  .switch input:checked::after { transform: translateX(20px); }
+}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; } }

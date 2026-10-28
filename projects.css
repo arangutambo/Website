@@ -19,7 +19,7 @@
 .plate:nth-of-type(3n+2) .plate-no { background: var(--green); }
 .plate:nth-of-type(3n+3) .plate-no { background: var(--rust); }
 .plate-body { padding: clamp(18px, 3.5vw, 32px); min-width: 0; }
-.plate-body h2 { font-size: clamp(19px, 3vw, 23px); line-height: 1.25; margin: 0 0 6px; }
+.plate-body h2, .plate-body h3 { font-size: clamp(19px, 3vw, 23px); line-height: 1.25; margin: 0 0 6px; }
 .meta { font-family: var(--mono); font-size: 12px; color: var(--muted); letter-spacing: .03em; margin: 0 0 14px; }
 .plate-body p { margin: 0 0 12px; max-width: 62ch; }
 
@@ -62,7 +62,7 @@ pre.term .dim { color: #A89F8E; } pre.term .hl { color: #D9A58E; }
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
     /* per-element, never on the tall plate itself, so nothing can be stranded invisible on a short window */
-    .plate-body > h2, .plate-body > .fig, .plate-body > .readout, .plate-body > pre.term {
+    .plate-body > h2, .plate-body > h3, .plate-body > .fig, .plate-body > .readout, .plate-body > pre.term {
       animation: rise linear both; animation-timeline: view(); animation-range: entry 0% entry 70%;
     }
     @keyframes rise { from { opacity: 0.001; transform: translateY(12px); } to { opacity: 1; transform: none; } }

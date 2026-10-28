@@ -78,8 +78,10 @@ rf <- rarefy_even_depth(gp, sample.size = min(sample_sums(gp)), rngseed = 1, ver
 p <- cmdscale(phyloseq::distance(rf, "bray"), k = 2, eig = TRUE); host <- as.character(sample_data(rf)$SampleType) %in% c("Feces", "Skin", "Tongue")
 xr <- range(p$points[, 1]) + c(-.05, .05); yr <- range(p$points[, 2]) + c(-.05, .05)
 body <- frame(W, H, xlab = "PCo1", ylab = "PCo2") 
-body <- paste0(body, dots(sx(p$points[, 1], xr[1], xr[2], W), sy(p$points[, 2], yr[1], yr[2], H), ifelse(host, RUST, GREEN), 3.6, .9),
-  sprintf('<text x="%d" y="26" fill="%s">host-associated</text><text x="%d" y="37" fill="%s">free-living</text>', W - 100, RUST, W - 100, GREEN))
+px <- sx(p$points[, 1], xr[1], xr[2], W); py <- sy(p$points[, 2], yr[1], yr[2], H)
+body <- paste0(body, dots(px[host], py[host], RUST, 3.6, .95),
+  paste0(sprintf('<circle cx="%s" cy="%s" r="3.2" fill="none" stroke="%s" stroke-width="1.5"/>', f1(px[!host]), f1(py[!host]), GREEN), collapse = ""),
+  sprintf('<circle cx="%d" cy="25" r="3.4" fill="%s"/><text x="%d" y="28" fill="%s">host-associated</text><circle cx="%d" cy="37" r="3.2" fill="none" stroke="%s" stroke-width="1.5"/><text x="%d" y="40" fill="%s">free-living</text>', W - 108, RUST, W - 100, RUST, W - 108, GREEN, W - 100, GREEN))
 writeLines(wrap(W, H, body, "Ordination of microbial communities", "Bray-Curtis PCoA of 23 communities; host-associated and free-living samples separate."), "figures/panel-e-pcoa.svg")
 
 pc <- fread(file.path(gw, "results/qc/pcs.eigenvec")); smp <- fread(file.path(gw, "results/qc/samples.tsv")); pc <- merge(pc, smp, by.x = "#IID", by.y = "IID"); set.seed(8); pc <- pc[sample(.N, 900)]

@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="graphs.css" />
 </head>
 <body>
+  <a class="skip" href="#projects">Skip to projects</a>
   <main class="frame">
 
     <!-- palette strip, pulled from the tree-trunk photo -->
@@ -83,7 +84,7 @@
     <article class="leaf" id="gwas" aria-labelledby="h-gwas">
       <p class="leaf-tag"><span>01 / GWAS</span></p>
       <div class="plate-body demo">
-        <h2 id="h-gwas">Does ancestry fool a GWAS?</h2>
+        <h3 id="h-gwas">Does ancestry fool a GWAS?</h3>
         <p class="meta">PLINK 2 &middot; bash/zsh &middot; Slurm job scripts &middot; R &middot; 1000 Genomes chr22</p>
         <p>Phenotypes simulated on real genotypes from 2,504 people, so the true causal variants are known. An unadjusted scan lights up the whole chromosome; ten principal components remove it. The cost, and what remains, is in the report.</p>
         <figure class="fig">
@@ -107,7 +108,7 @@
     <article class="leaf" id="rnaseq" aria-labelledby="h-rna">
       <p class="leaf-tag"><span>02 / RNA-SEQ</span></p>
       <div class="plate-body">
-        <h2 id="h-rna">What does dexamethasone switch on in airway muscle?</h2>
+        <h3 id="h-rna">What does dexamethasone switch on in airway muscle?</h3>
         <p class="meta">R &middot; DESeq2 &middot; clusterProfiler &middot; GEO GSE52778</p>
         <p>A paired differential-expression re-analysis of four primary cell lines. All five genes named in the original paper are recovered; the gene count is much larger than the paper's, and the report says why I cannot yet explain the gap.</p>
         <figure class="fig">
@@ -126,7 +127,7 @@
     <article class="leaf" id="microbiome" aria-labelledby="h-mb">
       <p class="leaf-tag"><span>03 / MICROBIOME</span></p>
       <div class="plate-body">
-        <h2 id="h-mb">Do communities separate by habitat?</h2>
+        <h3 id="h-mb">Do communities separate by habitat?</h3>
         <p class="meta">R &middot; phyloseq &middot; vegan &middot; DESeq2 &middot; 16S Global Patterns</p>
         <p>Alpha and beta diversity, PERMANOVA and phylum-level differential abundance across 23 samples, with a dispersion check and a non-rarefied sensitivity analysis.</p>
         <figure class="fig">
@@ -145,7 +146,7 @@
     <article class="leaf" id="coral" aria-labelledby="h-coral">
       <p class="leaf-tag"><span>04 / STATISTICS</span></p>
       <div class="plate-body">
-        <h2 id="h-coral">Testing for cryptic species in a coral gene-expression survey</h2>
+        <h3 id="h-coral">Testing for cryptic species in a coral gene-expression survey</h3>
         <p class="meta">R &middot; PCA &middot; classical MDS &middot; k-means &middot; hierarchical clustering &middot; graduate coursework</p>
         <p>Reef coral colonies had been assigned to one species on morphology alone. Given a baseline expression matrix of a few hundred colonies across several hundred loci, did the molecular profiles break into discrete groups, as cryptic species would?</p>
         <p>They did not. Both ordinations showed one continuous cloud, cluster support stayed near zero at every <em>k</em>, and the hierarchical solution agreed. The defensible conclusion was a negative one, and the report said so and set out what evidence would settle it. The real work was declining a clustering result that k-means will hand you whether or not the structure is there.</p>
@@ -155,7 +156,7 @@
     <article class="leaf" id="spend-tags" aria-labelledby="h-st">
       <p class="leaf-tag"><span>05 / CODE</span></p>
       <div class="plate-body">
-        <h2 id="h-st">spend-tags</h2>
+        <h3 id="h-st">spend-tags</h3>
         <p class="meta">TypeScript &middot; Node &middot; 8 tests &middot; strict types</p>
         <p>A small command-line tool that reads spending written as hashtags in plain-text daily notes and summarises it by category and period. It is a standalone rewrite of the spending parser from my own Obsidian Finance Tracker plugin, extended with a CLI, period maths, CSV/JSON output and explicit reporting of lines it cannot parse.</p>
 <pre class="term" aria-label="Example command output"><span class="dim">$ node src/cli.ts sample/daily --period month</span>
