@@ -3,16 +3,36 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Antoine Haddad — Bioinformatics</title>
-  <meta name="description" content="Antoine Haddad — bioinformatics at The University of Queensland. Computational statistics, multivariate analysis and machine learning applied to biological data." />
+  <title>Antoine Haddad | Bioinformatics: GWAS, RNA-seq, Microbiome</title>
+  <meta name="description" content="Antoine Haddad, bioinformatics at UQ. Public-data re-analyses in R and Python: GWAS, RNA-seq, microbiome and single-cell, each with a written report." />
+  <link rel="canonical" href="https://antoinejhaddad.com/" />
   <meta name="author" content="Antoine Haddad" />
 
   <!-- Open Graph / social preview -->
-  <meta property="og:title" content="Antoine Haddad — Bioinformatics" />
-  <meta property="og:description" content="Bioinformatics at UQ. Computational statistics, multivariate analysis and machine learning applied to biological data." />
+  <meta property="og:title" content="Antoine Haddad | Bioinformatics: GWAS, RNA-seq, Microbiome" />
+  <meta property="og:description" content="Public-data re-analyses in R and Python: GWAS with population structure, RNA-seq, microbiome and single-cell, each with a written report." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://antoinejhaddad.com" />
+  <meta property="og:url" content="https://antoinejhaddad.com/" />
+  <meta property="og:image" content="https://antoinejhaddad.com/og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Antoine Haddad, bioinformatics, with a Manhattan plot from a simulated GWAS" />
+  <meta name="twitter:card" content="summary_large_image" />
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Antoine Haddad",
+    "url": "https://antoinejhaddad.com/",
+    "jobTitle": "Bioinformatics graduate student",
+    "description": "Biomedical science graduate completing a Graduate Diploma in Bioinformatics at The University of Queensland.",
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "The University of Queensland" },
+    "address": { "@type": "PostalAddress", "addressLocality": "Brisbane", "addressRegion": "QLD", "addressCountry": "AU" },
+    "knowsAbout": ["Bioinformatics", "Computational statistics", "GWAS", "RNA-seq", "Microbiome analysis", "Single-cell RNA-seq"],
+    "sameAs": ["https://www.linkedin.com/in/antoine-haddad-638b13313/", "https://github.com/arangutambo"]
+  }
+  </script>
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="projects.css" />
@@ -143,8 +163,27 @@
       </div>
     </article>
 
+    <article class="leaf" id="single-cell" aria-labelledby="h-sc">
+      <p class="leaf-tag"><span>04 / SINGLE-CELL</span></p>
+      <div class="plate-body">
+        <h3 id="h-sc">How stable are single-cell clusters?</h3>
+        <p class="meta">Python &middot; Scanpy &middot; Leiden &middot; 10x PBMC 3k</p>
+        <p>A full single-cell workflow on 2,700 blood cells, with the question most tutorials skip: if I re-cluster random subsamples, do the same groups come back? The report also records two annotation attempts that were wrong and how they were caught.</p>
+        <figure class="fig">
+          <img src="figures/scrna-umap.png" width="884" height="714" loading="lazy" alt="UMAP of 2,434 blood cells coloured by annotated type: CD4 T, CD8 T, NK, B, CD14 and CD16 monocytes, and dendritic cells." />
+          <figcaption>UMAP of the cells that passed quality control, coloured by annotated type.</figcaption>
+        </figure>
+        <div class="readout">
+          <div><b>7</b><span>cell types annotated</span></div>
+          <div><b>0.75</b><span>subsample stability (ARI)</span></div>
+          <div><b>2</b><span>wrong labels caught</span></div>
+        </div>
+        <div class="links"><a href="reports/04_SingleCell_PBMC3k_Scanpy_clustering_stability.pdf">Report (PDF)</a></div>
+      </div>
+    </article>
+
     <article class="leaf" id="coral" aria-labelledby="h-coral">
-      <p class="leaf-tag"><span>04 / STATISTICS</span></p>
+      <p class="leaf-tag"><span>05 / STATISTICS</span></p>
       <div class="plate-body">
         <h3 id="h-coral">Testing for cryptic species in a coral gene-expression survey</h3>
         <p class="meta">R &middot; PCA &middot; classical MDS &middot; k-means &middot; hierarchical clustering &middot; graduate coursework</p>
@@ -154,7 +193,7 @@
     </article>
 
     <article class="leaf" id="spend-tags" aria-labelledby="h-st">
-      <p class="leaf-tag"><span>05 / CODE</span></p>
+      <p class="leaf-tag"><span>06 / CODE</span></p>
       <div class="plate-body">
         <h3 id="h-st">spend-tags</h3>
         <p class="meta">TypeScript &middot; Node &middot; 8 tests &middot; strict types</p>
@@ -325,6 +364,7 @@
 
     <footer class="foot">
       <span>© <span id="year">2026</span> Antoine Haddad</span>
+      <span>Updated <time datetime="2026-10-28">28 Oct 2026</time></span>
     </footer>
 
   </main>

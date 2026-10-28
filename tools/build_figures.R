@@ -119,3 +119,19 @@ set.seed(7); r2 <- res[sample(.N, 700)]
 writeLines(motif(r2$log2FoldChange, r2$y, CREAM, ifelse(r2$padj < 0.05, 0.85, 0.35)), "figures/tag-rnaseq.svg")
 writeLines(motif(p$points[, 1], p$points[, 2], CREAM, ifelse(host, 0.95, 0.5), r = 2.4), "figures/tag-microbiome.svg")
 cat("tag motifs written\n")
+
+# ---- 7. Social preview image (1200x630): name, role, and the real adjusted Manhattan scan ----
+BROWN <- "#5C4736"
+png("og.png", width = 1200, height = 630, res = 96, bg = PAPER)
+par(mar = c(0, 0, 0, 0), xpd = NA); plot.new(); plot.window(c(0, 1200), c(630, 0))
+rect(0, 0, 1200, 14, col = BROWN, border = NA); rect(300, 0, 600, 14, col = RUST, border = NA); rect(600, 0, 900, 14, col = GREEN, border = NA)
+text(60, 150, "Antoine Haddad", adj = c(0, 0.5), cex = 3.6, font = 2, col = INK)
+text(60, 215, "Bioinformatics  ·  computational statistics  ·  Brisbane", adj = c(0, 0.5), cex = 1.35, col = RUST)
+text(60, 260, "Re-analyses of public data in R and Python:\nGWAS, RNA-seq, microbiome and single-cell,\neach with a written report.", adj = c(0, 1), cex = 1.25, col = MUTED)
+d2 <- readRDS(file.path(g, "scan_pc.rds")); d2 <- d2[sample(.N, min(.N, 2500))]
+x <- 60 + (d2$POS - min(d2$POS)) / diff(range(d2$POS)) * 1080; y <- 590 - pmin(-log10(d2$P), 55) / 55 * 150
+points(x, y, pch = 15, cex = 0.45, col = ifelse(-log10(d2$P) > -log10(5e-8), RUST, BROWN))
+segments(60, 590 - (-log10(5e-8)) / 55 * 150, 1140, 590 - (-log10(5e-8)) / 55 * 150, lty = 3, col = RUST)
+segments(60, 592, 1140, 592, col = INK); text(1140, 614, "antoinejhaddad.com", adj = c(1, 0.5), cex = 1, col = MUTED)
+dev.off()
+cat("og.png written\n")
