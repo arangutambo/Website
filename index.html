@@ -15,6 +15,8 @@
 
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="projects.css" />
+  <link rel="stylesheet" href="graphs.css" />
 </head>
 <body>
   <main class="frame">
@@ -52,14 +54,119 @@
 
         <!-- Drop a file named portrait.jpg beside this page and it appears here.
              Until then the image removes itself rather than showing a broken icon. -->
+        <figure class="hero-tree">
+          <img src="figures/hero-tree.svg" width="300" height="330" alt="Dendrogram of 23 microbial communities: gut, skin and tongue samples (rust) cluster apart from soil, ocean, freshwater and sediment samples (green)" />
+          <figcaption>Bray-Curtis UPGMA tree of 23 microbial communities &middot; <a href="#microbiome">project 03</a></figcaption>
+        </figure>
         <img class="portrait" src="portrait.jpg" alt="Antoine Haddad" onerror="this.remove()" />
       </div>
     </header>
+    <div class="skyline"><img src="figures/skyline.svg" alt="" width="1200" height="64" /></div>
+
+    <!-- ===== PROJECTS (front and centre) ===== -->
+    <section class="section projects" id="projects">
+      <div class="section-head">
+        <span class="index">01</span>
+        <h2>Projects</h2>
+      </div>
+      <p class="lede-projects">Independent re-analyses of public data, each with a written report. Every figure is drawn from the project's own results, and every report says what it can and cannot support. The analysis code and reports were written with the assistance of Claude Code (Anthropic), and each report says so.</p>
+      <div class="tree">
+    <article class="leaf" id="gwas" aria-labelledby="h-gwas">
+      <p class="leaf-tag"><span>01 / GWAS</span></p>
+      <div class="plate-body demo">
+        <h2 id="h-gwas">Does ancestry fool a GWAS?</h2>
+        <p class="meta">PLINK 2 &middot; bash/zsh &middot; Slurm job scripts &middot; R &middot; 1000 Genomes chr22</p>
+        <p>Phenotypes simulated on real genotypes from 2,504 people, so the true causal variants are known. An unadjusted scan lights up the whole chromosome; ten principal components remove it. The cost, and what remains, is in the report.</p>
+        <figure class="fig">
+          <label class="switch"><input type="checkbox" id="adj" /> <span>Adjust for 10 PCs</span> <span class="tag-state" style="margin-left:auto"></span></label>
+          <div class="swap">
+            <img src="figures/gwas-naive.svg" width="600" height="250" alt="Manhattan plot of an unadjusted scan: points above the significance line across the whole chromosome" />
+            <img src="figures/gwas-pc.svg" width="600" height="250" alt="Manhattan plot after adjusting for 10 principal components: significant points only near the true causal variants" />
+          </div>
+          <figcaption>Replicate 1, scenario with a population shift. Green ticks: true causal variants. Dashed: p = 5&times;10<sup>&minus;8</sup>.</figcaption>
+        </figure>
+        <div class="readout">
+          <div><b class="base">40.5</b><b class="alt">1.18</b><span style="text-transform:none">median inflation (&lambda;)</span></div>
+          <div><b class="base">24.0</b><b class="alt">0.1</b><span>false windows</span></div>
+          <div><b>10</b><span>replicates / scenario</span></div>
+        </div>
+        <div class="links"><a href="reports/03_GWAS_population_structure_simulation_1000G.pdf">Report (PDF)</a></div>
+        <p class="note">Run end to end on macOS under bash 3.2 and zsh. The Slurm scripts are syntax-checked but have not been run on a scheduler; Linux and Windows are not yet tested. The report's last table says exactly this.</p>
+      </div>
+    </article>
+
+    <article class="leaf" id="rnaseq" aria-labelledby="h-rna">
+      <p class="leaf-tag"><span>02 / RNA-SEQ</span></p>
+      <div class="plate-body">
+        <h2 id="h-rna">What does dexamethasone switch on in airway muscle?</h2>
+        <p class="meta">R &middot; DESeq2 &middot; clusterProfiler &middot; GEO GSE52778</p>
+        <p>A paired differential-expression re-analysis of four primary cell lines. All five genes named in the original paper are recovered; the gene count is much larger than the paper's, and the report says why I cannot yet explain the gap.</p>
+        <figure class="fig">
+          <img src="figures/rnaseq-volcano.svg" width="600" height="250" alt="Volcano plot of gene expression change after dexamethasone, with five named genes labelled on the right" />
+          <figcaption>Each point is a gene. Rust: adjusted p &lt; 0.05.</figcaption>
+        </figure>
+        <div class="readout">
+          <div><b>4,081</b><span>genes, padj &lt; 0.05</span></div>
+          <div><b>5 / 5</b><span>paper's genes found</span></div>
+          <div><b>2,773</b><span>if pairing ignored</span></div>
+        </div>
+        <div class="links"><a href="reports/01_RNAseq_DESeq2_airway_reanalysis.pdf">Report (PDF)</a></div>
+      </div>
+    </article>
+
+    <article class="leaf" id="microbiome" aria-labelledby="h-mb">
+      <p class="leaf-tag"><span>03 / MICROBIOME</span></p>
+      <div class="plate-body">
+        <h2 id="h-mb">Do communities separate by habitat?</h2>
+        <p class="meta">R &middot; phyloseq &middot; vegan &middot; DESeq2 &middot; 16S Global Patterns</p>
+        <p>Alpha and beta diversity, PERMANOVA and phylum-level differential abundance across 23 samples, with a dispersion check and a non-rarefied sensitivity analysis.</p>
+        <figure class="fig">
+          <img src="figures/microbiome-pcoa.svg" width="600" height="250" alt="Ordination of 23 microbial communities; host-associated samples (rust) and free-living samples (green) occupy different regions" />
+          <figcaption>Bray-Curtis PCoA. Rust: host-associated; green: free-living.</figcaption>
+        </figure>
+        <div class="readout">
+          <div><b>0.12</b><span>R&sup2; habitat (BC)</span></div>
+          <div><b>0.22</b><span>R&sup2; habitat (wUniFrac)</span></div>
+          <div><b>0.69</b><span>R&sup2; sample type (BC)</span></div>
+        </div>
+        <div class="links"><a href="reports/02_Microbiome_diversity_GlobalPatterns_reanalysis.pdf">Report (PDF)</a></div>
+      </div>
+    </article>
+
+    <article class="leaf" id="coral" aria-labelledby="h-coral">
+      <p class="leaf-tag"><span>04 / STATISTICS</span></p>
+      <div class="plate-body">
+        <h2 id="h-coral">Testing for cryptic species in a coral gene-expression survey</h2>
+        <p class="meta">R &middot; PCA &middot; classical MDS &middot; k-means &middot; hierarchical clustering &middot; graduate coursework</p>
+        <p>Reef coral colonies had been assigned to one species on morphology alone. Given a baseline expression matrix of a few hundred colonies across several hundred loci, did the molecular profiles break into discrete groups, as cryptic species would?</p>
+        <p>They did not. Both ordinations showed one continuous cloud, cluster support stayed near zero at every <em>k</em>, and the hierarchical solution agreed. The defensible conclusion was a negative one, and the report said so and set out what evidence would settle it. The real work was declining a clustering result that k-means will hand you whether or not the structure is there.</p>
+      </div>
+    </article>
+
+    <article class="leaf" id="spend-tags" aria-labelledby="h-st">
+      <p class="leaf-tag"><span>05 / CODE</span></p>
+      <div class="plate-body">
+        <h2 id="h-st">spend-tags</h2>
+        <p class="meta">TypeScript &middot; Node &middot; 8 tests &middot; strict types</p>
+        <p>A small command-line tool that reads spending written as hashtags in plain-text daily notes and summarises it by category and period. It is a standalone rewrite of the spending parser from my own Obsidian Finance Tracker plugin, extended with a CLI, period maths, CSV/JSON output and explicit reporting of lines it cannot parse.</p>
+<pre class="term" aria-label="Example command output"><span class="dim">$ node src/cli.ts sample/daily --period month</span>
+2026-10-01 to 2026-10-31   spent 1401.91   income 120.00   net -1281.91
+  housing             1250.50    1 items   89%
+  food                  77.50    4 items    6%
+  transport             73.00    2 items    5%
+<span class="hl">1 line(s) skipped:</span>
+  sample/daily/2026-10-06.md:5  tagged line has no amount</pre>
+        <p class="note">The plugin it came from is mine and MIT-licensed. The standalone version was developed with Claude Code.</p>
+      </div>
+    </article>
+      </div>
+      <p class="aside">I also design and ship <a href="beyond.html">Obsidian plugins in TypeScript</a> &mdash; four of them, released and in daily use, and the largest body of code I have written and maintained.</p>
+    </section>
 
     <!-- ===== ABOUT ===== -->
     <section class="section">
       <div class="section-head">
-        <span class="index">01</span>
+        <span class="index">02</span>
         <h2>About</h2>
       </div>
       <p>
@@ -85,7 +192,7 @@
     <!-- ===== EDUCATION ===== -->
     <section class="section">
       <div class="section-head">
-        <span class="index">02</span>
+        <span class="index">03</span>
         <h2>Education</h2>
       </div>
 
@@ -117,100 +224,10 @@
       </div>
     </section>
 
-    <!-- ===== SKILLS ===== -->
-    <section class="section">
-      <div class="section-head">
-        <span class="index">03</span>
-        <h2>Technical skills</h2>
-      </div>
-      <p>
-        Tools I've actually used on real data and can talk through in detail:
-      </p>
-
-      <ul class="tags" aria-label="Skills and tools">
-        <li>Python</li>
-        <li>R</li>
-        <li>Bash / zsh</li>
-        <li>Git</li>
-        <li>TypeScript</li>
-        <li>Computational statistics</li>
-        <li>Multivariate analysis</li>
-        <li>Machine learning</li>
-        <li>Genome informatics</li>
-        <li>Genetic data analysis</li>
-        <li>Data visualisation</li>
-        <li>Reproducible workflows</li>
-      </ul>
-    </section>
-
-    <!-- ===== PROJECTS ===== -->
-    <section class="section">
-      <div class="section-head">
-        <span class="index">04</span>
-        <h2>Projects</h2>
-      </div>
-
-      <div class="project">
-        <h3>Testing for cryptic species in a coral gene-expression survey</h3>
-        <p class="project-meta">Unsupervised learning · R · Graduate coursework</p>
-        <p>
-          A set of reef coral colonies had been assigned to a single species on
-          morphology alone. Given a baseline gene-expression matrix — a few
-          hundred colonies across several hundred loci — the question was
-          whether that assumption survived the molecular data, or whether the
-          profiles broke into discrete groups consistent with cryptic species
-          hiding inside one morphological description.
-        </p>
-        <p>
-          I standardised the expression variables so no gene dominated on scale
-          alone, screened for multivariate outliers using Mahalanobis distance
-          on the leading components, then ran <strong>PCA</strong> and
-          <strong>classical MDS</strong> as two independent views of the same
-          variation. Rather than eyeball the ordinations for groups, I tested
-          for them: <strong>k-means</strong> across a range of <em>k</em>, judged
-          on within-cluster sum of squares and average silhouette width, and
-          cross-checked against <strong>Ward hierarchical clustering</strong>.
-          Sampling depth was held back and used only afterwards, as an
-          ecological sanity check on whatever the clustering found.
-        </p>
-        <p>
-          The evidence pointed the other way. No component dominated the
-          variance, both ordinations showed one continuous cloud rather than
-          separated ones, and cluster support stayed near zero at every
-          <em>k</em> — with the hierarchical solution agreeing. The defensible
-          conclusion was a negative one: these data don't support a
-          cryptic-species reading, and the report said so and set out what
-          evidence would actually settle it. The real work was declining a
-          clustering result that k-means will hand you whether or not the
-          structure is there.
-        </p>
-      </div>
-
-      <div class="project">
-        <h3>Reversi engine in Python</h3>
-        <p class="project-meta">Python · Testing · Graduate coursework</p>
-        <p>
-          A complete implementation of Reversi built from a specification —
-          board state, move legality, line-flipping in eight directions, turn
-          handling and end-game detection. I wrote it as small testable units
-          with their own test files rather than one monolithic loop, which is
-          the habit that carries over into analysis code.
-        </p>
-      </div>
-
-      <p class="aside">
-        I also design and ship <a href="beyond.html">Obsidian plugins in
-        TypeScript</a> — four of them, released and in daily use. They're
-        described on the other page since they're built for my own workflow
-        rather than for research, but they're the largest body of code I've
-        written and maintained.
-      </p>
-    </section>
-
     <!-- ===== EXPERIENCE ===== -->
     <section class="section">
       <div class="section-head">
-        <span class="index">05</span>
+        <span class="index">04</span>
         <h2>Experience</h2>
       </div>
 
@@ -268,7 +285,7 @@
     <!-- ===== CONTACT ===== -->
     <section class="section">
       <div class="section-head">
-        <span class="index">06</span>
+        <span class="index">05</span>
         <h2>Contact</h2>
       </div>
       <p>
@@ -299,7 +316,6 @@
 
     <footer class="foot">
       <span>© <span id="year">2026</span> Antoine Haddad</span>
-      <span>Plain HTML &amp; CSS · Hosted on GitHub Pages</span>
     </footer>
 
   </main>
