@@ -75,7 +75,7 @@ n <- length(hc$order); ypos <- numeric(n); ypos[hc$order] <- seq_len(n)
 node_x <- numeric(n - 1); node_y <- numeric(n - 1)
 pos <- function(i) if (i < 0) c(0, ypos[-i]) else c(node_x[i], node_y[i])
 segs <- character(0)
-tw <- 300; th <- 330; x0 <- 6; y0 <- 10; maxh <- max(hc$height)
+tw <- 340; th <- 330; x0 <- 6; y0 <- 10; maxh <- max(hc$height)
 X <- function(h) x0 + (1 - h / maxh) * (tw - x0) * 0.82  # root at left, tips at right
 Y <- function(y) y0 + (y - 1) / (n - 1) * (th - 2 * y0)
 for (k in seq_len(n - 1)) {

@@ -19,7 +19,7 @@
 }
 
 /* ---- hero: dendrogram beside the text ---- */
-.hero-tree { margin: 0; flex: 0 0 auto; width: min(290px, 100%); }
+.hero-tree { margin: 0; flex: 0 0 auto; width: min(310px, 100%); }
 .hero-tree img { display: block; width: 100%; height: auto; }
 .hero-tree figcaption { font-family: var(--mono); font-size: 10.5px; letter-spacing: .04em; color: var(--muted); margin-top: 6px; }
 @media (max-width: 640px) { .hero-tree { width: min(260px, 100%); } }
