@@ -24,9 +24,24 @@
 .hero-tree figcaption { font-family: var(--mono); font-size: 10.5px; letter-spacing: .04em; color: var(--muted); margin-top: 6px; }
 @media (max-width: 640px) { .hero-tree { width: min(260px, 100%); } }
 
-/* ---- Manhattan-plot skyline under the hero (the real PC-adjusted scan from the GWAS project) ---- */
-.skyline { border-bottom: 2px solid var(--border); background: var(--paper); line-height: 0; }
-.skyline img { display: block; width: 100%; height: 64px; }
+/* ---- Figure 1: a multi-panel figure in the style of a paper, built from the projects' real outputs ---- */
+.figure-1 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; background: var(--paper); border-bottom: 2px solid var(--border); border-top: 0; }
+.figure-1 .panel { position: relative; display: block; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--paper); line-height: 0; text-decoration: none; transition: background .15s; }
+.figure-1 .panel:nth-of-type(3n+1) { border-right: 1px solid var(--border); }
+.figure-1 .panel-a { grid-column: span 2; }
+.figure-1 img { display: block; width: 100%; height: auto; }
+.figure-1 .pl { position: absolute; top: 0; left: 0; z-index: 1; font: 700 11px/1 var(--mono); color: var(--paper); background: var(--ink); padding: 4px 6px; transition: background .15s; }
+.figure-1 .panel:hover, .figure-1 .panel:focus-visible { background: #F3EDE1; outline: none; }
+.figure-1 .panel:hover .pl, .figure-1 .panel:focus-visible .pl { background: var(--rust); }
+.figure-1 .fig1-cap { grid-column: 2 / span 2; margin: 0; padding: 14px 16px; font: 11.5px/1.55 var(--mono); color: var(--muted); border-bottom: 1px solid var(--border); max-width: none; }
+.figure-1 .fig1-cap b { color: var(--ink); }
+@media (max-width: 720px) {
+  .figure-1 { grid-template-columns: repeat(2, 1fr); }
+  .figure-1 .panel-a { grid-column: span 2; }
+  .figure-1 .fig1-cap { grid-column: span 2; }
+}
+@media (max-width: 440px) { .figure-1 { grid-template-columns: 1fr; } .figure-1 .panel-a, .figure-1 .fig1-cap { grid-column: auto; } }
+.chip-primary { background: var(--ink); color: var(--paper); }
 
 /* ---- projects as a phylogeny: one trunk, one square node and branch per project ---- */
 .lede-projects { color: var(--muted); }

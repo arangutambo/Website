@@ -45,6 +45,7 @@
           </p>
 
           <nav class="chips" aria-label="Contact and links">
+            <a class="chip chip-primary" href="#projects">Projects</a>
             <a class="chip" href="mailto:connect@antoinejhaddad.com">Email</a>
             <a class="chip" href="https://www.linkedin.com/in/antoine-haddad-638b13313/" target="_blank" rel="noopener">LinkedIn</a>
             <a class="chip" href="https://github.com/arangutambo" target="_blank" rel="noopener">GitHub</a>
@@ -55,13 +56,21 @@
         <!-- Drop a file named portrait.jpg beside this page and it appears here.
              Until then the image removes itself rather than showing a broken icon. -->
         <figure class="hero-tree">
-          <img src="figures/hero-tree.svg" width="340" height="330" alt="Dendrogram of 23 microbial communities: gut, skin and tongue samples (rust) cluster apart from soil, ocean, freshwater and sediment samples (green)" />
+          <img src="figures/hero-tree.svg" width="380" height="330" alt="Dendrogram of 23 microbial communities: gut, skin and tongue samples (rust) cluster apart from soil, ocean, freshwater and sediment samples (green)" />
           <figcaption>Bray-Curtis UPGMA tree of 23 microbial communities &middot; <a href="#microbiome">project 03</a></figcaption>
         </figure>
         <img class="portrait" src="portrait.jpg" alt="Antoine Haddad" onerror="this.remove()" />
       </div>
     </header>
-    <div class="skyline"><img src="figures/skyline.svg" alt="" width="1200" height="64" /></div>
+    <div class="figure-1" id="figure-1" role="group" aria-labelledby="fig1-cap">
+      <a class="panel panel-a" href="#gwas"><span class="pl">A</span><img src="figures/panel-a-manhattan.svg" width="620" height="222" alt="Two stacked Manhattan plots of a simulated association scan. The unadjusted scan has significant points across the whole chromosome; the scan adjusted for ten principal components has them only near the true causal variants." /></a>
+      <a class="panel panel-b" href="#rnaseq"><span class="pl">B</span><img src="figures/panel-b-volcano.svg" width="300" height="210" alt="Volcano plot of gene expression change after dexamethasone with five named genes labelled." /></a>
+      <a class="panel panel-c" href="#gwas"><span class="pl">C</span><img src="figures/panel-c-qq.svg" width="300" height="210" alt="Quantile-quantile plot: the unadjusted scan departs strongly from the diagonal, the adjusted scan stays close to it." /></a>
+      <a class="panel panel-d" href="#rnaseq"><span class="pl">D</span><img src="figures/panel-d-heatmap.svg" width="300" height="210" alt="Heatmap of the 40 most significant genes across eight samples; treated and untreated samples separate." /></a>
+      <a class="panel panel-e" href="#microbiome"><span class="pl">E</span><img src="figures/panel-e-pcoa.svg" width="300" height="210" alt="Ordination of 23 microbial communities; host-associated and free-living samples occupy different regions." /></a>
+      <a class="panel panel-f" href="#gwas"><span class="pl">F</span><img src="figures/panel-f-pca.svg" width="300" height="210" alt="First two principal components of 2,504 genotypes, coloured by continental group." /></a>
+      <p class="fig1-cap" id="fig1-cap"><b>Figure 1.</b> Outputs from the projects below, computed from public data. <b>A</b>, simulated GWAS scan on 1000 Genomes chromosome 22, unadjusted and adjusted for ten principal components. <b>B</b>, volcano plot of the dexamethasone response in airway smooth muscle; labelled genes were named in the original paper. <b>C</b>, QQ plot of the two scans in A. <b>D</b>, the 40 most significant genes. <b>E</b>, Bray-Curtis ordination of 23 microbial communities. <b>F</b>, population structure in the genotypes behind A. Each panel links to its project.</p>
+    </div>
 
     <!-- ===== PROJECTS (front and centre) ===== -->
     <section class="section projects" id="projects">
