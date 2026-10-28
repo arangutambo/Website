@@ -3,7 +3,7 @@
 # Needs the analysis repos next to this one (~/Developer/gwas-1000g-simulation, etc.).
 suppressPackageStartupMessages({library(data.table)})
 dev <- normalizePath("~/Developer")
-INK <- "#2A2521"; MUTED <- "#6E6557"; RUST <- "#97553B"; GREEN <- "#59684B"; PAPER <- "#EAE3D6"
+INK <- "#2A2521"; MUTED <- "#5C5448"; RUST <- "#8C4B34"; GREEN <- "#53624A"; PAPER <- "#EAE3D6"
 W <- 600; H <- 250; L <- 36; R <- 12; T <- 14; B <- 26
 sx <- function(v, lo, hi) L + (v - lo) / (hi - lo) * (W - L - R)
 sy <- function(v, lo, hi) H - B - (v - lo) / (hi - lo) * (H - B - T)

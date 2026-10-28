@@ -8,10 +8,10 @@
   --paper:    #EAE3D6;  /* pale bark / background      */
   --paper-2:  #DCD2C1;  /* second tone / fills         */
   --ink:      #2A2521;  /* warm near-black text & lines*/
-  --muted:    #6E6557;  /* secondary text              */
+  --muted:    #5C5448;  /* secondary text              */
   --brown:    #5C4736;  /* muddy brown                 */
-  --rust:     #97553B;  /* browny red                  */
-  --green:    #59684B;  /* muted forest green          */
+  --rust:     #8C4B34;  /* browny red                  */
+  --green:    #53624A;  /* muted forest green          */
   --border:   #2A2521;
 
   --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
