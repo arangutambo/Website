@@ -192,8 +192,26 @@
       </div>
     </article>
 
+    <article class="leaf" id="snpdist" aria-labelledby="h-snpdist">
+      <p class="leaf-tag"><span>06 / TOOL</span></p>
+      <div class="plate-body">
+        <h3 id="h-snpdist">snpdist: pairwise SNP distances, checked against a C reference</h3>
+        <p class="meta">Python &middot; NumPy &middot; pytest &middot; ruff &middot; bioinformatics tool</p>
+        <p>A NumPy re-implementation of the idea behind <em>snp-dists</em>: the matrix of SNP differences between every pair of sequences in an alignment. Distances become matrix multiplications instead of a Python double loop. Correctness is tested against the real C program, and the README reports where the speed advantage disappears.</p>
+<pre class="term" aria-label="Test and benchmark output"><span class="dim">$ python -m pytest -q</span>
+17 passed   <span class="dim">(4 compare the matrix with the C snp-dists binary)</span>
+<span class="dim">$ python bench/bench.py        # 500 seqs x 100 kb</span>
+numpy 1.3-6.1 s (noisy)   C -j 1: 22-32 s   C -j 8: 5.5 s</pre>
+        <div class="readout">
+          <div><b>17</b><span>tests, none skipped</span></div>
+          <div><b>4 / 4</b><span>modes match the C tool</span></div>
+          <div><b>&asymp; C</b><span>speed at 8 threads, large case</span></div>
+        </div>
+      </div>
+    </article>
+
     <article class="leaf" id="spend-tags" aria-labelledby="h-st">
-      <p class="leaf-tag"><span>06 / CODE</span></p>
+      <p class="leaf-tag"><span>07 / CODE</span></p>
       <div class="plate-body">
         <h3 id="h-st">spend-tags</h3>
         <p class="meta">TypeScript &middot; Node &middot; 8 tests &middot; strict types</p>
