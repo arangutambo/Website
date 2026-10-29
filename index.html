@@ -125,8 +125,28 @@
       </div>
     </article>
 
+    <article class="leaf" id="arabidopsis" aria-labelledby="h-ara">
+      <p class="leaf-tag"><span>02 / PLANT GWAS</span></p>
+      <div class="plate-body">
+        <h3 id="h-ara">Does a mixed model keep a published plant GWAS calibrated?</h3>
+        <p class="meta">Python &middot; NumPy &middot; mixed models &middot; 1001 Genomes &middot; 107 phenotypes</p>
+        <p>A re-analysis of Atwell et al. (2010) with 1.83 million SNPs. The paper already used a mixed model, so the questions are narrower: does its calibration finding replicate with a different implementation, does a leave-one-chromosome-out kinship matter, and do four loci chosen in advance localise? Only 137 of the paper's 199 lines are in the genotype release, and the report says what that costs.</p>
+        <figure class="fig">
+          <img src="figures/atwell-ft16.png" width="1224" height="696" loading="lazy" alt="Manhattan plots for flowering time at 16 degrees: the unadjusted scan has thousands of significant SNPs across all chromosomes; the mixed-model scan has one." />
+          <figcaption>Flowering time (FT16): unadjusted scan above, mixed model below. Dashed line: Bonferroni threshold.</figcaption>
+        </figure>
+        <div class="readout">
+          <div><b>1.46 &rarr; 1.01</b><span>median inflation, OLS to mixed</span></div>
+          <div><b>52 &rarr; 15</b><span>phenotypes with a hit</span></div>
+          <div><b>8 / 38</b><span>known-locus pairs, ~1.9 by chance</span></div>
+        </div>
+        <div class="links"><a href="reports/05_Arabidopsis_Atwell2010_mixed_model_reanalysis.pdf">Report (PDF)</a></div>
+        <p class="note">Not an improvement on the paper: hit lists were not compared, and the data overlap the original study. Only one trait-locus pair survives a Bonferroni correction over the 38 tested.</p>
+      </div>
+    </article>
+
     <article class="leaf" id="rnaseq" aria-labelledby="h-rna">
-      <p class="leaf-tag"><span>02 / RNA-SEQ</span></p>
+      <p class="leaf-tag"><span>03 / RNA-SEQ</span></p>
       <div class="plate-body">
         <h3 id="h-rna">What does dexamethasone switch on in airway muscle?</h3>
         <p class="meta">R &middot; DESeq2 &middot; clusterProfiler &middot; GEO GSE52778</p>
@@ -145,7 +165,7 @@
     </article>
 
     <article class="leaf" id="microbiome" aria-labelledby="h-mb">
-      <p class="leaf-tag"><span>03 / MICROBIOME</span></p>
+      <p class="leaf-tag"><span>04 / MICROBIOME</span></p>
       <div class="plate-body">
         <h3 id="h-mb">Do communities separate by habitat?</h3>
         <p class="meta">R &middot; phyloseq &middot; vegan &middot; DESeq2 &middot; 16S Global Patterns</p>
@@ -164,7 +184,7 @@
     </article>
 
     <article class="leaf" id="single-cell" aria-labelledby="h-sc">
-      <p class="leaf-tag"><span>04 / SINGLE-CELL</span></p>
+      <p class="leaf-tag"><span>05 / SINGLE-CELL</span></p>
       <div class="plate-body">
         <h3 id="h-sc">How stable are single-cell clusters?</h3>
         <p class="meta">Python &middot; Scanpy &middot; Leiden &middot; 10x PBMC 3k</p>
@@ -183,7 +203,7 @@
     </article>
 
     <article class="leaf" id="coral" aria-labelledby="h-coral">
-      <p class="leaf-tag"><span>05 / STATISTICS</span></p>
+      <p class="leaf-tag"><span>06 / STATISTICS</span></p>
       <div class="plate-body">
         <h3 id="h-coral">Testing for cryptic species in a coral gene-expression survey</h3>
         <p class="meta">R &middot; PCA &middot; classical MDS &middot; k-means &middot; hierarchical clustering &middot; graduate coursework</p>
@@ -193,7 +213,7 @@
     </article>
 
     <article class="leaf" id="snpdist" aria-labelledby="h-snpdist">
-      <p class="leaf-tag"><span>06 / TOOL</span></p>
+      <p class="leaf-tag"><span>07 / TOOL</span></p>
       <div class="plate-body">
         <h3 id="h-snpdist">snpdist: pairwise SNP distances, checked against a C reference</h3>
         <p class="meta">Python &middot; NumPy &middot; pytest &middot; ruff &middot; bioinformatics tool</p>
@@ -212,7 +232,7 @@ numpy 1.3-6.1 s (noisy)   C -j 1: 22-32 s   C -j 8: 5.5 s</pre>
     </article>
 
     <article class="leaf" id="spend-tags" aria-labelledby="h-st">
-      <p class="leaf-tag"><span>07 / CODE</span></p>
+      <p class="leaf-tag"><span>08 / CODE</span></p>
       <div class="plate-body">
         <h3 id="h-st">spend-tags</h3>
         <p class="meta">TypeScript &middot; Node &middot; 8 tests &middot; strict types</p>
