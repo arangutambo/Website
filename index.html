@@ -76,10 +76,6 @@
 
         <!-- Drop a file named portrait.jpg beside this page and it appears here.
              Until then the image removes itself rather than showing a broken icon. -->
-        <figure class="hero-tree">
-          <img src="figures/hero-tree.svg" width="380" height="330" alt="Dendrogram of 23 microbial communities: gut, skin and tongue samples (rust) cluster apart from soil, ocean, freshwater and sediment samples (green)" />
-          <figcaption>Bray-Curtis UPGMA tree of 23 microbial communities &middot; <a href="#microbiome">project 03</a></figcaption>
-        </figure>
         <img class="portrait" src="portrait.jpg" alt="Antoine Haddad" onerror="this.remove()" />
       </div>
     </header>
@@ -99,14 +95,14 @@
         <span class="index">01</span>
         <h2>Projects</h2>
       </div>
-      <p class="lede-projects">Independent re-analyses of public data, each with a written report. Every figure is drawn from the project's own results, and every report says what it can and cannot support. The analysis code and reports were written with the assistance of Claude Code (Anthropic), and each report says so.</p>
+      <p class="lede-projects">Five independent re-analyses of public data, each with a written report, and two tools. Each re-analysis sets out to change something about a published result &mdash; the model, the correction, or the test &mdash; and reports what changed and what did not. Every figure is drawn from the project's own results, and every report says what it can and cannot support. The analysis code and reports were written with the assistance of Claude Code (Anthropic), and each report says so.</p>
       <div class="tree">
     <article class="leaf" id="gwas" aria-labelledby="h-gwas">
       <p class="leaf-tag"><span>01 / GWAS</span></p>
       <div class="plate-body demo">
         <h3 id="h-gwas">Does ancestry fool a GWAS?</h3>
-        <p class="meta">PLINK 2 &middot; bash/zsh &middot; Slurm job scripts &middot; R &middot; 1000 Genomes chr22</p>
-        <p>Phenotypes simulated on real genotypes from 2,504 people, so the true causal variants are known. An unadjusted scan lights up the whole chromosome; ten principal components remove it. The cost, and what remains, is in the report.</p>
+        <p class="meta">PLINK 2 &middot; bash/zsh &middot; Slurm job scripts &middot; R &middot; LD score regression &middot; 1000 Genomes chr22</p>
+        <p>Phenotypes simulated on real genotypes from 2,504 people, so both the true causal variants and the true amount of confounding are known. That makes it a test bench. Genomic inflation cannot say which part of an inflated scan is confounding and which is real signal; LD score regression claims its intercept can. Here it does &mdash; 1.05 where no confounder exists despite a tenfold inflation, 1.81 where one does &mdash; but it misclassifies 6 of 20 individual scans, so the report says not to lean on it.</p>
         <figure class="fig">
           <label class="switch"><input type="checkbox" id="adj" /> <span>Adjust for 10 PCs</span> <span class="tag-state" style="margin-left:auto"></span></label>
           <div class="swap">
@@ -118,10 +114,10 @@
         <div class="readout">
           <div><b class="base">40.5</b><b class="alt">1.18</b><span style="text-transform:none">median inflation (&lambda;)</span></div>
           <div><b class="base">24.0</b><b class="alt">0.1</b><span>false windows</span></div>
-          <div><b>10</b><span>replicates / scenario</span></div>
+          <div><b>1.05 vs 1.81</b><span style="text-transform:none">LD-score intercept, no confounder vs confounder</span></div>
         </div>
         <div class="links"><a href="reports/03_GWAS_population_structure_simulation_1000G.pdf">Report (PDF)</a><a href="https://github.com/arangutambo/gwas-1000g-simulation" target="_blank" rel="noopener">Code (GitHub)</a></div>
-        <p class="note">Run end to end on macOS under bash 3.2 and zsh. The Slurm scripts are syntax-checked but have not been run on a scheduler. Shell and REML smoke tests pass on Ubuntu, macOS and Windows in GitHub Actions; the full pipeline has not been run on Linux or Windows. The report's last table says exactly this.</p>
+        <p class="note">Run end to end on macOS under bash 3.2 and zsh. The Slurm scripts are syntax-checked but have not been run on a scheduler. Shell and REML smoke tests pass on Ubuntu, macOS and Windows in GitHub Actions; the full pipeline has not been run on Linux or Windows. The LD score regression was run end to end; its LD scores come from the sample being analysed rather than a matched reference panel. The report's last table says exactly this.</p>
       </div>
     </article>
 
@@ -168,16 +164,16 @@
       <p class="leaf-tag"><span>04 / MICROBIOME</span></p>
       <div class="plate-body">
         <h3 id="h-mb">Do communities separate by habitat?</h3>
-        <p class="meta">R &middot; phyloseq &middot; vegan &middot; DESeq2 &middot; 16S Global Patterns</p>
-        <p>Alpha and beta diversity, PERMANOVA and phylum-level differential abundance across 23 samples, with a dispersion check and a non-rarefied sensitivity analysis.</p>
+        <p class="meta">R &middot; phyloseq &middot; vegan &middot; DESeq2 &middot; ANCOM-BC2 &middot; CLR/Aitchison &middot; 16S Global Patterns</p>
+        <p>Alpha and beta diversity, PERMANOVA and differential abundance across 23 samples. Rarefying and DESeq2 are both contested for this kind of data, so the report re-runs each question the other way: an Aitchison distance that uses every read, and ANCOM-BC2 against DESeq2. The habitat split survives both. The number of taxa called does not &mdash; DESeq2 flags 21 of 34 phyla where ANCOM-BC2 flags 5, on identical counts.</p>
         <figure class="fig">
           <img src="figures/microbiome-pcoa.svg" width="600" height="250" alt="Ordination of 23 microbial communities; host-associated samples (rust) and free-living samples (green) occupy different regions" />
           <figcaption>Bray-Curtis PCoA. Rust: host-associated; green: free-living.</figcaption>
         </figure>
         <div class="readout">
-          <div><b>0.12</b><span>R&sup2; habitat (BC)</span></div>
-          <div><b>0.22</b><span>R&sup2; habitat (wUniFrac)</span></div>
-          <div><b>0.69</b><span>R&sup2; sample type (BC)</span></div>
+          <div><b>12&ndash;22%</b><span>R&sup2; habitat, three distances</span></div>
+          <div><b>21 vs 5</b><span>phyla called, DESeq2 vs ANCOM-BC2</span></div>
+          <div><b>0.94</b><span>effect-size agreement (genus)</span></div>
         </div>
         <div class="links"><a href="reports/02_Microbiome_diversity_GlobalPatterns_reanalysis.pdf">Report (PDF)</a><a href="https://github.com/arangutambo/microbiome-globalpatterns" target="_blank" rel="noopener">Code (GitHub)</a></div>
       </div>
@@ -187,14 +183,14 @@
       <p class="leaf-tag"><span>05 / SINGLE-CELL</span></p>
       <div class="plate-body">
         <h3 id="h-sc">How stable are single-cell clusters?</h3>
-        <p class="meta">Python &middot; Scanpy &middot; Leiden &middot; 10x PBMC 3k</p>
-        <p>A full single-cell workflow on 2,700 blood cells, with the question most tutorials skip: if I re-cluster random subsamples, do the same groups come back? The report also records two annotation attempts that were wrong and how they were caught.</p>
+        <p class="meta">Python &middot; Scanpy &middot; Leiden &middot; CellTypist &middot; 10x PBMC 3k</p>
+        <p>A full single-cell workflow on 2,700 blood cells, with the two questions tutorials skip. If I re-cluster random subsamples, do the same groups come back? And does a classifier trained on external data agree with my hand-written marker rules? It names all 8 clusters the same way &mdash; and is least sure about the one cluster an earlier attempt of mine got wrong. Both failed attempts are in the report.</p>
         <figure class="fig">
           <img src="figures/scrna-umap.png" width="884" height="714" loading="lazy" alt="UMAP of 2,434 blood cells coloured by annotated type: CD4 T, CD8 T, NK, B, CD14 and CD16 monocytes, and dendritic cells." />
           <figcaption>UMAP of the cells that passed quality control, coloured by annotated type.</figcaption>
         </figure>
         <div class="readout">
-          <div><b>7</b><span>cell types annotated</span></div>
+          <div><b>8 / 8</b><span style="text-transform:none">clusters confirmed by an independent classifier</span></div>
           <div><b>0.75</b><span>subsample stability (ARI)</span></div>
           <div><b>2</b><span>wrong labels caught</span></div>
         </div>
@@ -202,18 +198,9 @@
       </div>
     </article>
 
-    <article class="leaf" id="coral" aria-labelledby="h-coral">
-      <p class="leaf-tag"><span>06 / STATISTICS</span></p>
-      <div class="plate-body">
-        <h3 id="h-coral">Testing for cryptic species in a coral gene-expression survey</h3>
-        <p class="meta">R &middot; PCA &middot; classical MDS &middot; k-means &middot; hierarchical clustering &middot; graduate coursework</p>
-        <p>Reef coral colonies had been assigned to one species on morphology alone. Given a baseline expression matrix of a few hundred colonies across several hundred loci, did the molecular profiles break into discrete groups, as cryptic species would?</p>
-        <p>They did not. Both ordinations showed one continuous cloud, cluster support stayed near zero at every <em>k</em>, and the hierarchical solution agreed. The defensible conclusion was a negative one, and the report said so and set out what evidence would settle it. The real work was declining a clustering result that k-means will hand you whether or not the structure is there.</p>
-      </div>
-    </article>
 
     <article class="leaf" id="snpdist" aria-labelledby="h-snpdist">
-      <p class="leaf-tag"><span>07 / TOOL</span></p>
+      <p class="leaf-tag"><span>TOOL / SNPDIST</span></p>
       <div class="plate-body">
         <h3 id="h-snpdist">snpdist: pairwise SNP distances, checked against a C reference</h3>
         <p class="meta">Python &middot; NumPy &middot; pytest &middot; ruff &middot; bioinformatics tool</p>
@@ -232,7 +219,7 @@ numpy 1.3-6.1 s (noisy)   C -j 1: 22-32 s   C -j 8: 5.5 s</pre>
     </article>
 
     <article class="leaf" id="spend-tags" aria-labelledby="h-st">
-      <p class="leaf-tag"><span>08 / CODE</span></p>
+      <p class="leaf-tag"><span>TOOL / SPEND-TAGS</span></p>
       <div class="plate-body">
         <h3 id="h-st">spend-tags</h3>
         <p class="meta">TypeScript &middot; Node &middot; 8 tests &middot; strict types</p>
@@ -404,7 +391,7 @@ numpy 1.3-6.1 s (noisy)   C -j 1: 22-32 s   C -j 8: 5.5 s</pre>
 
     <footer class="foot">
       <span>© <span id="year">2026</span> Antoine Haddad</span>
-      <span>Updated <time datetime="2026-10-29">29 Oct 2026</time></span>
+      <span>Updated <time datetime="2026-10-30">30 Oct 2026</time></span>
     </footer>
 
   </main>
